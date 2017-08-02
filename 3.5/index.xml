@@ -136,8 +136,7 @@ Prerequisites  The example below requires a restaurants collection in the test d
       
       <guid>/mongo-java-driver/3.5/whats-new/</guid>
       <description>What&amp;rsquo;s New in 3.5 Native POJO support The 3.5 release adds support for POJO serialization at the BSON layer, and can be used by the synchronous and asynchronous drivers. See the POJO Quick start pages for details.
- POJO Quick Start POJO Quick Start (Async)
-POJO Reference  Improved JSON support The 3.5 release improves support for JSON parsing and generation.
+ POJO Quick Start POJO Quick Start (Async) POJO Reference  Improved JSON support The 3.5 release improves support for JSON parsing and generation.
  Implements the new Extended JSON specification Implements custom JSON converters to give applications full control over JSON generation for each BSON type  See the JSON reference for details.</description>
     </item>
     
