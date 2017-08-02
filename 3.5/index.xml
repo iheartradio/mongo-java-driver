@@ -135,9 +135,9 @@ Prerequisites  The example below requires a restaurants collection in the test d
       <pubDate>Thu, 09 Jun 2016 12:47:43 -0400</pubDate>
       
       <guid>/mongo-java-driver/3.5/whats-new/</guid>
-      <description>What&amp;rsquo;s New in 3.5 The 3.5 release continues to fully support the MongoDB server through the 3.4 release. Key new features include:
+      <description>What&amp;rsquo;s New in 3.5 Key new features of the 3.5 Java driver release:
 Native POJO support The 3.5 release adds support for POJO serialization at the BSON layer, and can be used by the synchronous and asynchronous drivers. See the POJO Quick start pages for details.
- POJO Quick Start POJO Quick Start (Async) POJO Reference  Improved JSON support The 3.</description>
+ POJO Quick Start POJO Quick Start (Async) POJO Reference  Improved JSON support The 3.5 release improves support for JSON parsing and generation.</description>
     </item>
     
     <item>
