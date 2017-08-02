@@ -487,9 +487,10 @@ TestConnectionPoolListener connectionPoolListener = new TestConnectionPoolListen
 ClusterSettings clusterSettings = ClusterSettings.builder()
                                           .hosts(seedList)
                                           .build();
-ConnectionPoolSettings connectionPoolSettings = ConnectionPoolSettings.builder()
-                                                                      .addConnectionPoolListener(connectionPoolListener)
-                                                                      .build();
+ConnectionPoolSettings connectionPoolSettings = 
+        ConnectionPoolSettings.builder()
+                              .addConnectionPoolListener(connectionPoolListener)
+                              .build();
 MongoClientSettings settings = MongoClientSettings.builder()
                                        .clusterSettings(clusterSettings)
                                        .connectionPoolSettings(connectionPoolSettings)
