@@ -473,8 +473,9 @@ Field Updates This section describes update operators that apply to the value of
       <pubDate>Thu, 19 Mar 2015 12:53:39 -0400</pubDate>
       
       <guid>/mongo-java-driver/3.5/upgrading/</guid>
-      <description>Upgrading from 3.3.x There is one breaking API change in the 3.4 release: due to the addition of a new BSON type for 128-bit decimal values, a new method had to be added to the BSONCallback(/mongo-java-driver/3.5/javadoc?org/bson/BSONCallback.html ) interface. Any clients that directly implement that interface must add an implementation of the new method in order to be compatible with the 3.4 driver.
-Otherwise, the 3.4 release is binary and source compatible with the 3.</description>
+      <description>Upgrading from 3.4.x The 3.5 release is binary and source compatible with the 3.4 release, except for methods that have been added to interfaces that have been marked as unstable, and changes to classes or interfaces that have been marked as internal or annotated as Beta.
+Upgrading from 2.x You must upgrade first to 3.0 driver. See the Upgrade guide in the 3.0 driver reference documentation.
+System Requirements The minimum JVM is now Java 6: however, specific features require Java 7:</description>
     </item>
     
     <item>
@@ -641,7 +642,7 @@ important The MongoDB Async Driver requires either Netty or Java 7.
       
       <guid>/mongo-java-driver/3.5/driver/getting-started/installation/</guid>
       <description>Installation The recommended way to get started using one of the drivers in your project is with a dependency management system.
-There are two Maven artifacts available in the 3.4 release. The preferred artifact for new applications is mongodb-driver however, we still publish the legacy mongo-java-driver uber-jar.
+There are two Maven artifacts available in the 3.5 release. The preferred artifact for new applications is mongodb-driver however, we still publish the legacy mongo-java-driver uber-jar.
  MongoDB Driver The MongoDB Driver mongodb-driver is the updated synchronous Java driver that includes the legacy API as well as a new generic MongoCollection interface that complies with a new cross-driver CRUD specification.</description>
     </item>
     
@@ -661,7 +662,7 @@ There are two Maven artifacts available in the 3.4 release. The preferred artifa
       <pubDate>Tue, 17 Mar 2015 15:36:56 +0000</pubDate>
       
       <guid>/mongo-java-driver/3.5/driver-async/</guid>
-      <description>MongoDB Async Java Driver Documentation The following guide provides information on using the callback-based MongoDB Async Java Driver 3.4.
+      <description>MongoDB Async Java Driver Documentation The following guide provides information on using the callback-based MongoDB Async Java Driver 3.5.
 Note There are two higher level MongoDB Asynchronous Java Drivers available, that users may find easier to work with due to their friendlier APIs:
  MongoDB RxJava Driver An RxJava implementation of the MongoDB Driver. MongoDB Reactive Streams Java Driver A Reactive Streams implementation for the JVM.   What&amp;rsquo;s New in 3.</description>
     </item>
@@ -732,8 +733,8 @@ Note There are two higher level MongoDB Asynchronous Java Drivers available, tha
       <pubDate>Tue, 17 Mar 2015 15:36:56 +0000</pubDate>
       
       <guid>/mongo-java-driver/3.5/</guid>
-      <description>MongoDB Java Driver Documentation Welcome to the MongoDB Java driver documentation hub for the 3.4 driver release.
-What&amp;rsquo;s New in 3.4 For key new features of 3.4, see What&amp;rsquo;s New.
+      <description>MongoDB Java Driver Documentation Welcome to the MongoDB Java driver documentation hub for the 3.5 driver release.
+What&amp;rsquo;s New in 3.5 For key new features of 3.5, see What&amp;rsquo;s New.
 Upgrade To upgrade, refer to the Upgrade Considerations documentation.
 MongoDB Driver For the synchronous MongoDB Driver, see MongoDB Driver section.
 MongoDB Async Driver For the new asynchronous MongoDB Async Driver, the MongoDB Async Driver section.
