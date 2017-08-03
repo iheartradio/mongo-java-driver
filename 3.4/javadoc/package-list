@@ -29,6 +29,8 @@ org.bson
 org.bson.assertions
 org.bson.codecs
 org.bson.codecs.configuration
+org.bson.codecs.pojo
+org.bson.codecs.pojo.annotations
 org.bson.conversions
 org.bson.diagnostics
 org.bson.io
