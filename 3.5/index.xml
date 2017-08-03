@@ -485,7 +485,7 @@ System Requirements The minimum JVM is now Java 6: however, specific features re
       
       <guid>/mongo-java-driver/3.5/bson/</guid>
       <description>BSON The BSON library comprehensively supports BSON, the data storage and network transfer format that MongoDB uses for “documents&amp;rdquo;. BSON, short for Binary JSON, is a binary-encoded serialization of JSON-like documents.
- Documents: Documentation of the driver&amp;rsquo;s support for BSON document representations Readers and Writers: Documentation of the driver&amp;rsquo;s support for stream-based reading and writing of BSON documents JSON: Documentation of the driver&amp;rsquo;s support for JSON Codec and CodecRegistry: Documentation of the driver&amp;rsquo;s Codec API, an abstraction for producing and consuming BSON document representations using the stream-based readers and writers [POJOs(/mongo-java-driver/3.</description>
+ Documents: Documentation of the driver&amp;rsquo;s support for BSON document representations Readers and Writers: Documentation of the driver&amp;rsquo;s support for stream-based reading and writing of BSON documents JSON: Documentation of the driver&amp;rsquo;s support for JSON Codec and CodecRegistry: Documentation of the driver&amp;rsquo;s Codec API, an abstraction for producing and consuming BSON document representations using the stream-based readers and writers POJOs: Documentation of the driver&amp;rsquo;s POJO support.</description>
     </item>
     
     <item>
