@@ -60,7 +60,7 @@
       <div class="ssidebarwrapper">
         <h3>
           <a class="index-link" href="/mongo-java-driver/3.6/../">MongoDB Java Driver</a>
-          <a class="version pull-right" href="/mongo-java-driver/3.6">3.5</a>
+          <a class="version pull-right" href="/mongo-java-driver/3.6">3.6</a>
         </h3>
 
         
@@ -395,7 +395,7 @@ to handle the translation to and from <a href="/mongo-java-driver/3.6/bson/"><co
 <p>The following example will combine the default codec registry, with the <code>PojoCodecProvider</code> configured to automatically create <code>PojoCodecs</code>:</p>
 
 <pre><code class="language-java">CodecRegistry pojoCodecRegistry = fromRegistries(MongoClient.getDefaultCodecRegistry(),
-                fromProviders(PojoCodecProvider.builder().automatic().build()));
+                fromProviders(PojoCodecProvider.builder().automatic(true).build()));
 </code></pre>
 
 <h3 id="using-the-codecregistry">Using the CodecRegistry</h3>
@@ -673,7 +673,7 @@ System.out.println(deleteResult.getDeletedCount());
 <script type="text/javascript">
   var DOCUMENTATION_OPTIONS = {
    URL_ROOT:    "/mongo-java-driver/3.6",
-   VERSION:     "3.5",
+   VERSION:     "3.6",
    COLLAPSE_INDEX: false,
    FILE_SUFFIX: '.html',
    HAS_SOURCE:  true

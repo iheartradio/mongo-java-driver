@@ -60,7 +60,7 @@
       <div class="ssidebarwrapper">
         <h3>
           <a class="index-link" href="/mongo-java-driver/3.6/../">MongoDB Java Driver</a>
-          <a class="version pull-right" href="/mongo-java-driver/3.6">3.5</a>
+          <a class="version pull-right" href="/mongo-java-driver/3.6">3.6</a>
         </h3>
 
         
@@ -276,19 +276,14 @@ to resume if it encounters a potentially recoverable error.</p>
  import com.mongodb.MongoClientURI;
  import com.mongodb.client.MongoCollection;
  import com.mongodb.client.MongoDatabase;
- import com.mongodb.client.model.FullDocument;
+ import com.mongodb.client.model.changestream.FullDocument;
      
  import org.bson.Document;
 </code></pre></li>
 
-<li><p>Include the following code which the examples in the tutorials will use to print the results of the aggregation:</p>
+<li><p>Include the following code which the examples in the tutorials will use to print the results of the change stream:</p>
 
-<pre><code class="language-java"> Block&lt;Document&gt; printBlock = new Block&lt;Document&gt;() {
-        @Override
-        public void apply(final Document document) {
-            System.out.println(document.toJson());
-        }
-    };
+<pre><code class="language-java">    Block&lt;ChangeStreamDocument&lt;Document&gt;&gt; printBlock = System.out::println;  // method reference as lambda
 </code></pre></li>
 </ul>
 
@@ -372,7 +367,7 @@ so that the document after the update is included in the results.</p></li>
 <script type="text/javascript">
   var DOCUMENTATION_OPTIONS = {
    URL_ROOT:    "/mongo-java-driver/3.6",
-   VERSION:     "3.5",
+   VERSION:     "3.6",
    COLLAPSE_INDEX: false,
    FILE_SUFFIX: '.html',
    HAS_SOURCE:  true

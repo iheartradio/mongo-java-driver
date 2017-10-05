@@ -60,7 +60,7 @@
       <div class="ssidebarwrapper">
         <h3>
           <a class="index-link" href="/mongo-java-driver/3.6/../">MongoDB Java Driver</a>
-          <a class="version pull-right" href="/mongo-java-driver/3.6">3.5</a>
+          <a class="version pull-right" href="/mongo-java-driver/3.6">3.6</a>
         </h3>
 
         
@@ -282,16 +282,28 @@ import org.bson.Document;
 import java.util.Arrays;
 </code></pre></li>
 
-<li><p>Include the following code which the examples in the tutorials will use to print the results of the aggregation:</p>
-
-<pre><code class="language-java"> Block&lt;Document&gt; printBlock = new Block&lt;Document&gt;() {
-        @Override
-        public void apply(final Document document) {
-            System.out.println(document.toJson());
-        }
-    };
-</code></pre></li>
+<li><p>Include the following callback code which the examples in the tutorials will use:</p></li>
 </ul>
+
+<pre><code class="language-java">SingleResultCallback&lt;Void&gt; callbackWhenFinished = new SingleResultCallback&lt;Void&gt;() {
+    @Override
+    public void onResult(final Void result, final Throwable t) {
+        System.out.println(&quot;Operation Finished!&quot;);
+    }
+};
+</code></pre>
+
+<ul>
+<li>Include the following code which the examples in the tutorials will use to print the results of the change stream:</li>
+</ul>
+
+<pre><code class="language-java">        Block&lt;ChangeStreamDocument&lt;Document&gt;&gt; printBlock = new Block&lt;&gt;() {
+            @Override
+            public void apply(final ChangeStreamDocument&lt;Document&gt; changeStreamDocument) {
+                System.out.println(changeStreamDocument);
+            }
+        };
+</code></pre>
 
 <h2 id="connect-to-a-mongodb-deployment">Connect to a MongoDB Deployment</h2>
 
@@ -374,7 +386,7 @@ so that the document after the update is included in the results.</p></li>
 <script type="text/javascript">
   var DOCUMENTATION_OPTIONS = {
    URL_ROOT:    "/mongo-java-driver/3.6",
-   VERSION:     "3.5",
+   VERSION:     "3.6",
    COLLAPSE_INDEX: false,
    FILE_SUFFIX: '.html',
    HAS_SOURCE:  true
