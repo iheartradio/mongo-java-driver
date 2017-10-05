@@ -180,8 +180,7 @@ Prerequisites  The example below requires a restaurants collection in the test d
       <description>What&amp;rsquo;s New in 3.6 Key new features of the 3.6 Java driver release:
 Compression The 3.6 release adds support for compression of messages to and from appropriately configured MongoDB servers:
  Compression Tutorial Compression Tutorial (Async)  Change Stream support The 3.6 release adds support for change streams.
- Change Stream Quick Start Change Stream Quick Start (Async)  The 3.6 release adds support for causally consistent reads.
-What&amp;rsquo;s New in 3.</description>
+ Change Stream Quick Start Change Stream Quick Start (Async)  Causal consistency The 3.6 release adds support for causally consistency.</description>
     </item>
     
     <item>
