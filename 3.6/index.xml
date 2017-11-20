@@ -178,9 +178,10 @@ Prerequisites  The example below requires a restaurants collection in the test d
       
       <guid>/mongo-java-driver/3.6/whats-new/</guid>
       <description>What&amp;rsquo;s New in 3.6 Key new features of the 3.6 Java driver release:
+Change Stream support The 3.6 release adds support for change streams.
+ Change Stream Quick Start Change Stream Quick Start (Async)  Retryable writes The 3.6 release adds support for retryable writes using the retryWrites option in MongoClientOptions.
 Compression The 3.6 release adds support for compression of messages to and from appropriately configured MongoDB servers:
- Compression Tutorial Compression Tutorial (Async)  Change Stream support The 3.6 release adds support for change streams.
- Change Stream Quick Start Change Stream Quick Start (Async)  Causal consistency The 3.6 release adds support for causally consistency.</description>
+ Compression Tutorial Compression Tutorial (Async)  Causal consistency The 3.</description>
     </item>
     
     <item>
