@@ -2,6 +2,9 @@ com.mongodb
 com.mongodb.annotations
 com.mongodb.assertions
 com.mongodb.async
+com.mongodb.async.client
+com.mongodb.async.client.gridfs
+com.mongodb.async.client.gridfs.helpers
 com.mongodb.binding
 com.mongodb.bulk
 com.mongodb.client
