@@ -480,10 +480,15 @@ java.security.krb5.kdc=mykdc.myrealm.me
 <li><a href="https://stackoverflow.com/questions/23427343/cannot-retrieve-tgt-despite-allowtgtsessionkey-registry-entry">SO 23427343</a><br /></li>
 </ul>
 
+</div>
+
+
 <h2 id="ldap-plain">LDAP (PLAIN)</h2>
 
-<p><a href="http://www.mongodb.com/products/mongodb-enterprise">MongoDB Enterprise</a> supports proxy authentication through a Lightweight Directory Access Protocol (LDAP) service. To create a credential of type <a href="/mongo-java-driver/3.6/javadoc?core/authentication/#ldap-proxy-authority-authentication.html">LDAP</a> use the
-<a href="/mongo-java-driver/3.6/javadoc?com/mongodb/MongoCredential.html#createPlainCredential-java.lang.String-java.lang.String-char:A-"><code>createPlainCredential</code></a> static factory method:</p>
+<p><a href="http://www.mongodb.com/products/mongodb-enterprise">MongoDB Enterprise</a> supports proxy authentication through a Lightweight Directory Access Protocol (LDAP) service. To create a credential of type <a href="/mongo-java-driver/3.6/javadoc?core/authentication/#ldap-proxy-authority-authentication.html
+">LDAP</a> use the
+<a href="/mongo-java-driver/3.6/javadoc?com/mongodb/MongoCredential.html#createPlainCredential-java.lang.String-java.lang.String-char:A-
+"><code>createPlainCredential</code></a> static factory method:</p>
 
 <pre><code class="language-java">String user;          // The LDAP user name
 char[] password;      // The LDAP password
@@ -503,8 +508,6 @@ MongoClient mongoClient = new MongoClient(new ServerAddress(&quot;host1&quot;, 2
 <p>The method refers to the <code>plain</code> authentication mechanism instead
 of <code>LDAP</code> because technically the driver authenticates via the
 <a href="https://www.ietf.org/rfc/rfc4616.txt"><code>PLAIN</code></a> SASL mechanism.</p>
-
-</div>
 
 </div>
 
@@ -529,6 +532,7 @@ of <code>LDAP</code> because technically the driver authenticates via the
 <li><a href="#mongodb-cr">MONGODB-CR</a></li>
 <li><a href="#x-509">X.509</a></li>
 <li><a href="#gssapi">Kerberos (GSSAPI)</a></li>
+<li><a href="#ldap-plain">LDAP (PLAIN)</a></li>
 </ul></li>
 </ul>
 </nav></div></div>
