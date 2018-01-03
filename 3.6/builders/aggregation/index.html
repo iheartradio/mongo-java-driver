@@ -365,6 +365,51 @@ the <code>joinedOutput</code> field:</p>
 <pre><code class="language-java">lookup(&quot;fromCollection&quot;, &quot;local&quot;, &quot;from&quot;, &quot;joinedOutput&quot;)
 </code></pre>
 
+<p>Starting in 3.6, the <code>$lookup</code> pipeline stage also supports uncorrelated subqueries between two collections as well as allows other join
+conditions besides a single equality match.</p>
+
+<p>For example, given a collection <code>orders</code> with the following documents:</p>
+
+<pre><code class="language-json">  { &quot;_id&quot; : 1, &quot;item&quot; : &quot;almonds&quot;, &quot;price&quot; : 12, &quot;ordered&quot; : 2 }
+  { &quot;_id&quot; : 2, &quot;item&quot; : &quot;pecans&quot;,  &quot;price&quot; : 20, &quot;ordered&quot; : 1 }
+  { &quot;_id&quot; : 3, &quot;item&quot; : &quot;cookies&quot;, &quot;price&quot; : 10, &quot;ordered&quot; : 60 }
+</code></pre>
+
+<p>and another collection <code>warehouses</code> with the following documents:</p>
+
+<pre><code class="language-json">  { &quot;_id&quot; : 1, &quot;stock_item&quot; : &quot;almonds&quot;, &quot;warehouse&quot;: &quot;A&quot;, &quot;instock&quot; : 120 }
+  { &quot;_id&quot; : 2, &quot;stock_item&quot; : &quot;pecans&quot;,  &quot;warehouse&quot;: &quot;A&quot;, &quot;instock&quot; : 80 }
+  { &quot;_id&quot; : 3, &quot;stock_item&quot; : &quot;almonds&quot;, &quot;warehouse&quot;: &quot;B&quot;, &quot;instock&quot; : 60 }
+  { &quot;_id&quot; : 4, &quot;stock_item&quot; : &quot;cookies&quot;, &quot;warehouse&quot;: &quot;B&quot;, &quot;instock&quot; : 40 }
+  { &quot;_id&quot; : 5, &quot;stock_item&quot; : &quot;cookies&quot;, &quot;warehouse&quot;: &quot;A&quot;, &quot;instock&quot; : 80 }
+</code></pre>
+
+<p>The following <code>$lookup</code> stage, executed in an aggregation against the <code>orders</code> collection, joins with the <code>warehouse</code> collection by the
+item and whether the quantity in stock is sufficient to cover the ordered quantity:</p>
+
+<pre><code class="language-java">        List&lt;Variable&lt;?&gt;&gt; variables = asList(
+                new Variable&lt;&gt;(&quot;order_item&quot;, &quot;$item&quot;),
+                new Variable&lt;&gt;(&quot;order_qty&quot;, &quot;$ordered&quot;));
+
+        List&lt;Bson&gt; pipeline = asList(
+                match(expr(new Document(&quot;$and&quot;,
+                        asList(new Document(&quot;$eq&quot;, asList(&quot;$stock_item&quot;, &quot;$$order_item&quot;)),
+                                new Document(&quot;$gte&quot;, asList(&quot;$instock&quot;, &quot;$$order_qty&quot;)))))),
+                project(fields(exclude(&quot;stock_item&quot;), excludeId())));
+
+        lookup(&quot;warehouses&quot;, variables, pipeline, &quot;stockdata&quot;);
+</code></pre>
+
+<p>and produces the following documents:</p>
+
+<pre><code class="language-json">{ &quot;_id&quot; : 1, &quot;item&quot; : &quot;almonds&quot;, &quot;price&quot; : 12, &quot;ordered&quot; : 2,
+   &quot;stockdata&quot; : [ { &quot;warehouse&quot; : &quot;A&quot;, &quot;instock&quot; : 120 }, { &quot;warehouse&quot; : &quot;B&quot;, &quot;instock&quot; : 60 } ] }
+{ &quot;_id&quot; : 2, &quot;item&quot; : &quot;pecans&quot;, &quot;price&quot; : 20, &quot;ordered&quot; : 1,
+   &quot;stockdata&quot; : [ { &quot;warehouse&quot; : &quot;A&quot;, &quot;instock&quot; : 80 } ] }
+{ &quot;_id&quot; : 3, &quot;item&quot; : &quot;cookies&quot;, &quot;price&quot; : 10, &quot;ordered&quot; : 60,
+   &quot;stockdata&quot; : [ { &quot;warehouse&quot; : &quot;A&quot;, &quot;instock&quot; : 80 } ] }
+</code></pre>
+
 <h3 id="group">Group</h3>
 
 <p>The <a href="http://docs.mongodb.org/manual/reference/operator/aggregation/group/
