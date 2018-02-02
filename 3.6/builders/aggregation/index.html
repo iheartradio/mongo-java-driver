@@ -384,7 +384,7 @@ conditions besides a single equality match.</p>
   { &quot;_id&quot; : 5, &quot;stock_item&quot; : &quot;cookies&quot;, &quot;warehouse&quot;: &quot;A&quot;, &quot;instock&quot; : 80 }
 </code></pre>
 
-<p>The following <code>$lookup</code> stage, executed in an aggregation against the <code>orders</code> collection, joins with the <code>warehouse</code> collection by the
+<p>The following <code>$lookup</code> stage, executed in an aggregation against the <code>orders</code> collection, joins with the <code>warehouses</code> collection by the
 item and whether the quantity in stock is sufficient to cover the ordered quantity:</p>
 
 <pre><code class="language-java">        List&lt;Variable&lt;?&gt;&gt; variables = asList(
@@ -400,7 +400,7 @@ item and whether the quantity in stock is sufficient to cover the ordered quanti
         lookup(&quot;warehouses&quot;, variables, pipeline, &quot;stockdata&quot;);
 </code></pre>
 
-<p>and produces the following documents:</p>
+<p>The aggregation produces the following documents:</p>
 
 <pre><code class="language-json">{ &quot;_id&quot; : 1, &quot;item&quot; : &quot;almonds&quot;, &quot;price&quot; : 12, &quot;ordered&quot; : 2,
    &quot;stockdata&quot; : [ { &quot;warehouse&quot; : &quot;A&quot;, &quot;instock&quot; : 120 }, { &quot;warehouse&quot; : &quot;B&quot;, &quot;instock&quot; : 60 } ] }
