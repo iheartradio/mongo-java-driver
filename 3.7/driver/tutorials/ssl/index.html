@@ -280,7 +280,7 @@ com.mongodb.client.MongoClient;
 "><code>ConnectionString</code></a>, specify <code>ssl=true</code> as part of the connection
 string, as in:</p>
 
-<pre><code class="language-java">MongoClient mongoClient = MongoClient(&quot;mongodb://localhost/?ssl=true&quot;);
+<pre><code class="language-java">MongoClient mongoClient = MongoClients.create(&quot;mongodb://localhost/?ssl=true&quot;);
 </code></pre>
 
 <h3 id="specify-tls-ssl-via-mongoclientsettings">Specify TLS/SSL via <code>MongoClientSettings</code></h3>

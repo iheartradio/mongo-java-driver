@@ -407,7 +407,8 @@ to handle the translation to and from <a href="/mongo-java-driver/3.7/bson/"><co
 <li>You can set it when instantiating a MongoClient object:</li>
 </ul>
 
-<pre><code class="language-java"> MongoClient mongoClient = new MongoClient(&quot;localhost&quot;, MongoClientOptions.builder().codecRegistry(pojoCodecRegistry).build());
+<pre><code class="language-java"> MongoClient mongoClient = MongoClients.create(MongoClientSettings.builder()
+                                           .codecRegistry(pojoCodecRegistry).build());
 </code></pre>
 
 <ul>

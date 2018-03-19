@@ -267,7 +267,8 @@
 <li><p>Include the following import statements:</p>
 
 <pre><code class="language-java"> import com.mongodb.*;
- import com.mongodb.MongoClient;
+ import com.mongodb.client.MongoClients;
+ import com.mongodb.clientMongoClient;
  import com.mongodb.client.MongoCollection;
  import com.mongodb.client.MongoDatabase;
  import com.mongodb.client.model.Filters;
@@ -290,7 +291,7 @@
 
 <p>For example, include the following code to connect to a standalone MongoDB deployment running on localhost on port <code>27017</code> and define <code>database</code> to refer to the <code>test</code> database and <code>collection</code> to refer to the <code>restaurants</code> collection:</p>
 
-<pre><code class="language-java">MongoClient mongoClient = new MongoClient();
+<pre><code class="language-java">MongoClient mongoClient = MongoClients.create();
 MongoDatabase database = mongoClient.getDatabase(&quot;test&quot;);
 MongoCollection&lt;Document&gt; collection = database.getCollection(&quot;restaurants&quot;);
 </code></pre>

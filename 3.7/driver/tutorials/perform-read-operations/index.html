@@ -267,7 +267,8 @@
 <li><p>Include the following import statements:</p>
 
 <pre><code class="language-java"> import com.mongodb.*;
- import com.mongodb.MongoClient;
+ import com.mongodb.client.MongoClients;
+ import com.mongodb.client.MongoClient;
  import com.mongodb.client.MongoCollection;
  import com.mongodb.client.MongoDatabase;
  import com.mongodb.client.model.Projections;
@@ -296,7 +297,7 @@
 
 <p>For example, include the following code to connect to a standalone MongoDB deployment running on localhost on port <code>27017</code> and define <code>database</code> to refer to the <code>test</code> database and <code>collection</code> to refer to the <code>restaurants</code> collection:</p>
 
-<pre><code class="language-java">MongoClient mongoClient = new MongoClient();
+<pre><code class="language-java">MongoClient mongoClient = MongoClients.create();
 MongoDatabase database = mongoClient.getDatabase(&quot;test&quot;);
 MongoCollection&lt;Document&gt; collection = database.getCollection(&quot;restaurants&quot;);
 </code></pre>
@@ -468,28 +469,26 @@ see the <a href="/mongo-java-driver/3.7/driver/tutorials/text-search/">Text Sear
 ">read preference</a> at three levels:</p>
 
 <ul>
-<li><p>In a <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/MongoClient.html
+<li><p>In a <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/client/MongoClient.html
 "><code>MongoClient()</code></a></p>
 
 <ul>
-<li>Via <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/MongoClientOptions.html
-"><code>MongoClientOptions</code></a>:</li>
+<li>Via <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/MongoClientSettings.html
+"><code>MongoClientSettings</code></a>:</li>
 </ul>
 
-<pre><code class="language-java">  MongoClientOptions options = MongoClientOptions.builder().readPreference(
-                                  ReadPreference.secondary()).build();
-  MongoClient mongoClient = new MongoClient(Arrays.asList(
-                                  new ServerAddress(&quot;host1&quot;, 27017),
-                                  new ServerAddress(&quot;host2&quot;, 27017)), options);
+<pre><code class="language-java">  MongoClient mongoClient = MongoClients.create(MongoClientSettings.builder()
+                                                .applyConnectionString(new ConnectionString(&quot;mongodb://host1,host2&quot;))
+                                                .readPreference(ReadPreference.secondary())
+                                                .build());
 </code></pre>
 
 <ul>
-<li>Via <a href="/mongo-java-driver/3.7/javadoc?/com/mongodb/MongoClientURI.html
-"><code>MongoClientURI</code></a>, as in the following example:</li>
+<li>Via <a href="/mongo-java-driver/3.7/javadoc?/com/mongodb/ConnectionString.html
+"><code>ConnectionString</code></a>, as in the following example:</li>
 </ul>
 
-<pre><code class="language-java">  MongoClient mongoClient = new MongoClient(
-    new MongoClientURI(&quot;mongodb://host1:27017,host2:27017/?readPreference=secondary&quot;));
+<pre><code class="language-java">  MongoClient mongoClient = MongoClients.create(&quot;mongodb://host1:27017,host2:27017/?readPreference=secondary&quot;);
 </code></pre></li>
 
 <li><p>In a <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/client/MongoDatabase.html
@@ -513,7 +512,7 @@ see the <a href="/mongo-java-driver/3.7/driver/tutorials/text-search/">Text Sear
 
 <p>For example, in the following, the <code>collectionWithReadPref</code> instance has the read preference of primaryPreferred whereas the read preference of the <code>collection</code> is unaffected.</p>
 
-<pre><code class="language-java">  MongoCollection&lt;Document&gt; collectionWithReadPref =  collection.withReadPreference(ReadPreference.primaryPreferred());
+<pre><code class="language-java">  MongoCollection&lt;Document&gt; collectionWithReadPref = collection.withReadPreference(ReadPreference.primaryPreferred());
 </code></pre>
 
 <h2 id="read-concern">Read Concern</h2>

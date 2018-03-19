@@ -157,7 +157,7 @@ import com.mongodb.Block; import com.mongodb.client.MongoClients; import com.mon
       <description>Find Operations Find operations retrieve documents from a collection. You can specify a filter to select only those documents that match the filter condition.
 Prerequisites  The example below requires a restaurants collection in the test database. To create and populate the collection, follow the directions in github.
  Include the following import statements:
-import com.mongodb.*; import com.mongodb.MongoClient; import com.mongodb.client.MongoCollection; import com.mongodb.client.MongoDatabase; import com.mongodb.client.model.Projections; import com.mongodb.client.model.Filters; import static com.mongodb.client.model.Filters.*; import static com.</description>
+import com.mongodb.*; import com.mongodb.client.MongoClients; import com.mongodb.client.MongoClient; import com.mongodb.client.MongoCollection; import com.mongodb.client.MongoDatabase; import com.mongodb.client.model.Projections; import com.mongodb.client.model.Filters; import static com.</description>
     </item>
     
     <item>
