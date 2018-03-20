@@ -178,11 +178,7 @@ Prerequisites  The example below requires a restaurants collection in the test d
       
       <guid>/mongo-java-driver/3.7/whats-new/</guid>
       <description>What&amp;rsquo;s New in 3.7 Key new features of the 3.7 Java driver release:
-&amp;hellip;
-What&amp;rsquo;s New in 3.6 Key new features of the 3.6 Java driver release:
-Change Stream support The 3.6 release adds support for change streams.
- Change Stream Quick Start Change Stream Quick Start (Async)  Retryable writes The 3.6 release adds support for retryable writes using the retryWrites option in MongoClientOptions.
-Compression The 3.6 release adds support for compression of messages to and from appropriately configured MongoDB servers:</description>
+Java 9 support Modules The Java driver now provides a set of JAR files that are compliant with the Java 9 module specification, and Automatic-Module-Name declarations have been added to the manifests of those JAR files. See the Installation Guide for information on which JAR files are now Java 9-compliant modules as well as what each of their module names is.</description>
     </item>
     
     <item>

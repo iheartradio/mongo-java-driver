@@ -281,7 +281,7 @@
 
 <p>For example, include the following code to connect to a standalone MongoDB deployment running on localhost on port <code>27017</code> and define <code>database</code> to refer to the <code>test</code> database:</p>
 
-<pre><code class="language-java">MongoClient mongoClient = MongoClient.create();
+<pre><code class="language-java">MongoClient mongoClient = MongoClients.create();
 MongoDatabase database = mongoClient.getDatabase(&quot;test&quot;);
 </code></pre>
 

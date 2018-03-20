@@ -259,7 +259,40 @@
 
 <p>Key new features of the 3.7 Java driver release:</p>
 
-<p>&hellip;</p>
+<h3 id="java-9-support">Java 9 support</h3>
+
+<h4 id="modules">Modules</h4>
+
+<p>The Java driver now provides a set of JAR files that are compliant with the Java 9
+<a href="http://cr.openjdk.java.net/~mr/jigsaw/spec/">module specification</a>, and <code>Automatic-Module-Name</code> declarations have been added
+to the manifests of those JAR files. See the <a href="/mongo-java-driver/3.7/driver/getting-started/installation/">Installation Guide</a>
+for information on which JAR files are now Java 9-compliant modules as well as what each of their module names is.</p>
+
+<p>Note that it was not possible to modularize all the existing JAR files due to the fact that, for some of them, packages are split amongst
+multiple JAR files, and this violates a core rule of the Java 9 module system which states that at most one module contains classes for any
+given package. For instance, the <code>mongodb-driver</code> and <code>mongodb-driver-core</code> JAR files both contain classes in the <code>com.mongodb</code> package,
+and thus it&rsquo;s not possible to make both <code>mongodb-driver</code> and <code>mongodb-driver-core</code> Java 9 modules. Also so-called
+&ldquo;uber jars&rdquo; like <code>mongo-java-driver</code> are not appropriate for Java 9 modularization, as they can conflict with their non-uber brethren, and
+thus have not been given module names.</p>
+
+<p>Note that none of the modular JAR files contain <code>module-info</code> class files yet.  Addition of these classes will be considered in a future
+release.</p>
+
+<h4 id="new-entry-point">New Entry Point</h4>
+
+<p>So that the driver can offer a modular option, a new entry point has been added to the <code>com.mongodb.client</code> package.
+Static methods in this entry point, <code>com.mongodb.client.MongoClients</code>, returns instances of a new <code>com.mongodb.client.MongoClient</code>
+interface.  This interface, while similar to the existing <code>com.mongodb.MongoClient</code> class in that it is a factory for
+<code>com.mongodb.client.MongoDatabase</code> instances, does not support the legacy <code>com.mongodb.DBCollection</code>-based API, and thus does not suffer
+from the aforementioned package-splitting issue that prevents Java 9 modularization. This new entry point is encapsulated in the new
+<code>mongodb-driver-sync</code> JAR file, which is also a Java 9-compliant module.</p>
+
+<p>The new entry point also moves the driver further in the direction of effective deprecation of the legacy API, which is now only available
+only via the <code>mongo-java-driver</code> and <code>mongodb-driver</code> uber-jars, which are not Java 9 modules. At this point there are no plans to offer
+the legacy API as a Java 9 module.</p>
+
+<p>See <a href="/mongo-java-driver/3.7/driver/tutorials/connect-to-mongodb/">Connect To MongoDB</a> for details on the new <code>com.mongodb.client.MongoClients</code>
+and how it compares to the existing <code>com.mongodb.MongoClient</code> class.</p>
 
 <h2 id="what-s-new-in-3-6">What&rsquo;s New in 3.6</h2>
 
@@ -554,7 +587,14 @@ collection.bulkWrite(Arrays.asList(
 <ul>
 <li>
 <ul>
-<li><a href="#what-s-new-in-3-7">What&rsquo;s New in 3.7</a></li>
+<li><a href="#what-s-new-in-3-7">What&rsquo;s New in 3.7</a>
+<ul>
+<li><a href="#java-9-support">Java 9 support</a>
+<ul>
+<li><a href="#modules">Modules</a></li>
+<li><a href="#new-entry-point">New Entry Point</a></li>
+</ul></li>
+</ul></li>
 <li><a href="#what-s-new-in-3-6">What&rsquo;s New in 3.6</a>
 <ul>
 <li><a href="#change-stream-support">Change Stream support</a></li>
