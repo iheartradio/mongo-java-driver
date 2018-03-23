@@ -294,6 +294,68 @@ the legacy API as a Java 9 module.</p>
 <p>See <a href="/mongo-java-driver/3.7/driver/tutorials/connect-to-mongodb/">Connect To MongoDB</a> for details on the new <code>com.mongodb.client.MongoClients</code>
 and how it compares to the existing <code>com.mongodb.MongoClient</code> class.</p>
 
+<h3 id="unix-domain-socket-support">Unix domain socket support</h3>
+
+<p>The 3.7 driver adds support for Unix domain sockets via the <a href="http://https://github.com/jnr/jnr-unixsocket"><code>jnr.unixsocket</code></a> library.
+Connecting to Unix domain sockets is done via the <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/ConnectionString.html
+"><code>ConnectionString</code></a> or via
+<a href="/mongo-java-driver/3.7/javadoc?com/mongodb/UnixServerAddress.html
+"><code>UnixServerAddress</code></a>.</p>
+
+<h3 id="pojocodec-improvements">PojoCodec improvements</h3>
+
+<p>The 3.7 release brings support for <code>Map&lt;String, Object&gt;</code> to the <code>PojoCodec</code>.</p>
+
+<h3 id="jsr-310-instant-localdate-localdatetime-support">JSR-310 Instant, LocalDate &amp; LocalDateTime support</h3>
+
+<p>Support for <code>Instant</code>, <code>LocalDate</code> and <code>LocalDateTime</code> has been added to the driver. The MongoDB Java drivers team would like to thank
+<a href="https://github.com/cbartosiak">Cezary Bartosiak</a> for their excellent contribution to the driver. Users needing alternative data structures
+and / or more flexibility regarding JSR-310 dates should check out the alternative JSR-310 codecs provider by Cezary:
+<a href="https://github.com/cbartosiak/bson-codecs-jsr310">bson-codecs-jsr310</a>.</p>
+
+<h3 id="jsr-305-nonnull-annotations">JSR-305 NonNull annotations</h3>
+
+<p>The public API is now annotated with JSR-305 compatible @NonNull and @Nullable annotations.  This will allow programmers
+to rely on tools like FindBugs/SpotBugs, IDEs like IntelliJ IDEA, and compilers like the Kotlin compiler to find errors in the use of the
+driver via static analysis rather than via runtime failures, which may happen infrequently.</p>
+
+<h3 id="improved-logging-of-commands">Improved logging of commands</h3>
+
+<p>When the log level is set to DEBUG for the <code>org.mongodb.driver.protocol.command</code> logger, the driver now logs additional information to aid
+in debugging:</p>
+
+<ul>
+<li>Before sending the command, it logs the full command (up to 1000 characters), and the request id.</li>
+<li>After receive a response to the command, it logs the request id and elapsed time in milliseconds.</li>
+</ul>
+
+<p>Here&rsquo;s an example</p>
+
+<pre><code>10:37:29.099 [cluster-ClusterId {value='5a466138741fc252712a6d71', description='null'}-127.0.0.1:27017] DEBUG org.mongodb.driver.protocol.command - 
+Sending command '{ &quot;ismaster&quot; : 1, &quot;$db&quot; : &quot;admin&quot; } ...' with request id 4 to database admin on connection [connectionId{localValue:1, serverValue:1958}] to server 127.0.0.1:27017
+10:37:29.104 [cluster-ClusterId{value='5a466138741fc252712a6d71', description='null'}-127.0.0.1:27017] DEBUG org.mongodb.driver.protocol.command - 
+Execution of command with request id 4 completed successfully in 22.44 ms on connection [connectionId {localValue:1, serverValue:1958}] to server 127.0.0.1:27017
+</code></pre>
+
+<h3 id="improved-support-for-raw-documents">Improved support for &ldquo;raw&rdquo; documents</h3>
+
+<p>When working with &ldquo;raw&rdquo; BSON for improved performance via the <a href="/mongo-java-driver/3.7/javadoc?org/bson/RawBsonDocument.html
+"><code>RawBsonDocument</code></a>, the efficiency
+of accessing embedded documents and arrays has been drastically improved by returning raw slices of the containing document or array.  For
+instance</p>
+
+<pre><code class="language-java">RawBsonDocument doc = new RawBsonDocument(bytes);
+
+// returns a RawBsonDocument that is a slice of the bytes from the containing doc
+BsonDocument embeddedDoc = doc.getDocument(&quot;embeddedDoc&quot;);
+
+// returns a RawBsonArray that is a slice of the bytes from the containing doc
+BsonArray embeddedArray = doc.getArray(&quot;embeddedArray&quot;);
+
+// returns a RawBsonDocument that is a slice of the bytes from the containing array 
+BsonDocument embeddedDoc2 = (BsonDocument) embeddedArray.get(0); 
+</code></pre>
+
 <h2 id="what-s-new-in-3-6">What&rsquo;s New in 3.6</h2>
 
 <p>Key new features of the 3.6 Java driver release:</p>
@@ -334,7 +396,7 @@ and how it compares to the existing <code>com.mongodb.MongoClient</code> class.<
 <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/MongoClientOptions.html
 "><code>MongoClientOptions</code></a>.</p>
 
-<h3 id="pojocodec-improvements">PojoCodec improvements</h3>
+<h3 id="pojocodec-improvements-1">PojoCodec improvements</h3>
 
 <p>The 3.6 release brings new improvements to the <code>PojoCodec</code>:</p>
 
@@ -594,6 +656,12 @@ collection.bulkWrite(Arrays.asList(
 <li><a href="#modules">Modules</a></li>
 <li><a href="#new-entry-point">New Entry Point</a></li>
 </ul></li>
+<li><a href="#unix-domain-socket-support">Unix domain socket support</a></li>
+<li><a href="#pojocodec-improvements">PojoCodec improvements</a></li>
+<li><a href="#jsr-310-instant-localdate-localdatetime-support">JSR-310 Instant, LocalDate &amp; LocalDateTime support</a></li>
+<li><a href="#jsr-305-nonnull-annotations">JSR-305 NonNull annotations</a></li>
+<li><a href="#improved-logging-of-commands">Improved logging of commands</a></li>
+<li><a href="#improved-support-for-raw-documents">Improved support for &ldquo;raw&rdquo; documents</a></li>
 </ul></li>
 <li><a href="#what-s-new-in-3-6">What&rsquo;s New in 3.6</a>
 <ul>
@@ -602,7 +670,7 @@ collection.bulkWrite(Arrays.asList(
 <li><a href="#compression">Compression</a></li>
 <li><a href="#causal-consistency">Causal consistency</a></li>
 <li><a href="#application-configured-server-selection">Application-configured server selection</a></li>
-<li><a href="#pojocodec-improvements">PojoCodec improvements</a></li>
+<li><a href="#pojocodec-improvements-1">PojoCodec improvements</a></li>
 </ul></li>
 <li><a href="#what-s-new-in-3-5">What&rsquo;s New in 3.5</a>
 <ul>
