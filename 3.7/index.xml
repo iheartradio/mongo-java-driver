@@ -285,7 +285,7 @@ You can also use a MongoClientURI and pass it to a MongoClient() constructor tha
       
       <guid>/mongo-java-driver/3.7/driver/tutorials/ssl/</guid>
       <description>TLS/SSL The Java driver supports TLS/SSL connections to MongoDB servers using the underlying support for TLS/SSL provided by the JDK. You can configure the driver to use TLS/SSL either with ConnectionString or with MongoClientSettings. With the legacy MongoClient API you can use either MongoClientURI or MongoClientOptions.
-MongoClient API (since 3.7) Specify TLS/SSL via ConnectionString com.mongodb.client.MongoClients; com.mongodb.client.MongoClient;  To specify TLS/SSL with ConnectionString, specify ssl=true as part of the connection string, as in:</description>
+important Industry best practices recommend, and some regulations require, the use of TLS 1.1 or newer. Though no application changes are required for the driver to make use of the newest TLS protocols, Java runtime environments prior to Java 8 started to enable TLS 1.</description>
     </item>
     
     <item>
