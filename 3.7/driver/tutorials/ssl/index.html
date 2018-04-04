@@ -268,40 +268,6 @@ With the legacy MongoClient API you can use either <a href="/mongo-java-driver/3
 <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/MongoClientOptions.html
 "><code>MongoClientOptions</code></a>.</p>
 
-<div class="admonition important">
-<h5 class="admonition-title">important</h5>
-<p>Industry best practices recommend, and some regulations require, the use of TLS 1.1 or newer. Though no application changes are required
-for the driver to make use of the newest TLS protocols, Java runtime environments prior to Java 8 started to enable TLS 1.1 only in later
-updates:</p>
-
-<ul>
-<li><p>Java 7</p>
-
-<ul>
-<li>TSL 1.1 was first enabled by default in
-<a href="http://www.oracle.com/technetwork/java/javaseproducts/documentation/javase7supportreleasenotes-1601161.html#R170_131">Update 131</a>,
-released October 8, 2016.</li>
-<li>TLS 1.1 was first enabled via <code>jdk.tls.client.protocols</code> system property in
-<a href="http://www.oracle.com/technetwork/java/javaseproducts/documentation/javase7supportreleasenotes-1601161.html#R170_95">Update 95</a>,
-released January 19, 2016.</li>
-</ul></li>
-
-<li><p>Java 6</p>
-
-<ul>
-<li>TSL 1.1 was first enabled by default in
-<a href="http://www.oracle.com/technetwork/java/javase/documentation/overview-156328.html#R160_141">Update 141</a>, released on January 17, 2017.</li>
-<li>TLS 1.1 was first enabled via <code>jdk.tls.client.protocols</code> system property in
-<a href="http://www.oracle.com/technetwork/java/javase/documentation/overview-156328.html#6u115-b32">Update 115 b32</a>, released July 19, 2016.</li>
-</ul></li>
-</ul>
-
-<p>Note that these updates are only available from Oracle via its Java SE commercial support program.  Java 7 Update 131
-is available via <a href="http://openjdk.java.net/install/">OpenJDK</a>.</p>
-
-</div>
-
-
 <h2 id="mongoclient-api-since-3-7">MongoClient API (since 3.7)</h2>
 
 <h3 id="specify-tls-ssl-via-connectionstring">Specify TLS/SSL via <code>ConnectionString</code></h3>
@@ -481,6 +447,40 @@ command line program.</p>
 <p>For more information on configuring a Java application for TLS/SSL, please
 refer to the <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSS
 ERefGuide.html"><code>JSSE Reference Guide</code></a>.</p>
+
+<div class="admonition important">
+<h5 class="admonition-title">important</h5>
+<p>Industry best practices recommend, and some regulations require, the use of TLS 1.1 or newer. Though no application changes are required
+for the driver to make use of the newest TLS protocols, Java runtime environments prior to Java 8 started to enable TLS 1.1 only in later
+updates:</p>
+
+<ul>
+<li><p>Java 7</p>
+
+<ul>
+<li>TSL 1.1 was first enabled by default in
+<a href="http://www.oracle.com/technetwork/java/javaseproducts/documentation/javase7supportreleasenotes-1601161.html#R170_131">Update 131</a>,
+released October 8, 2016.</li>
+<li>TLS 1.1 was first enabled via <code>jdk.tls.client.protocols</code> system property in
+<a href="http://www.oracle.com/technetwork/java/javaseproducts/documentation/javase7supportreleasenotes-1601161.html#R170_95">Update 95</a>,
+released January 19, 2016.</li>
+</ul></li>
+
+<li><p>Java 6</p>
+
+<ul>
+<li>TSL 1.1 was first enabled by default in
+<a href="http://www.oracle.com/technetwork/java/javase/documentation/overview-156328.html#R160_141">Update 141</a>, released on January 17, 2017.</li>
+<li>TLS 1.1 was first enabled via <code>jdk.tls.client.protocols</code> system property in
+<a href="http://www.oracle.com/technetwork/java/javase/documentation/overview-156328.html#6u115-b32">Update 115 b32</a>, released July 19, 2016.</li>
+</ul></li>
+</ul>
+
+<p>Note that these updates are only available from Oracle via its Java SE commercial support program.  Java 7 Update 131
+is available via <a href="http://openjdk.java.net/install/">OpenJDK</a>.</p>
+
+</div>
+
 <div id="btnv"><div class="pull-left">
   <a class="navigation prev" href="/mongo-java-driver/3.7/driver/getting-started/quick-start-pojo/">
       <i class="fa fa-long-arrow-left"> </i> Quick Start - POJOs
