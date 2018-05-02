@@ -287,7 +287,7 @@ Netty artifacts.  The driver is currently tested against Netty 4.1.</p>
 
 <h3 id="via-mongoclientsettings">Via <code>MongoClientSettings</code></h3>
 
-<p>To specify TLS/SSL with  <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/async/client/MongoClientSettings.Builder.html#streamFactoryFactory-com.mongodb.connection.StreamFactoryFactory-
+<p>To specify TLS/SSL with  <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/MongoClientSettings.Builder.html#streamFactoryFactory-com.mongodb.connection.StreamFactoryFactory-
 "><code>MongoClientSettings</code></a> ,
 set the <code>sslEnabled</code> property to <code>true</code>, and the stream factory to
 <a href="/mongo-java-driver/3.7/javadoc?com/mongodb/connection/netty/NettyStreamFactoryFactory.html
@@ -419,21 +419,23 @@ updates:</p>
 <li><p>Java 7</p>
 
 <ul>
-<li>TSL 1.1 was first enabled by default in
+<li>Starting with
 <a href="http://www.oracle.com/technetwork/java/javaseproducts/documentation/javase7supportreleasenotes-1601161.html#R170_131">Update 131</a>,
-released October 8, 2016.</li>
-<li>TLS 1.1 was first enabled via <code>jdk.tls.client.protocols</code> system property in
+released October 8, 2016, TSL 1.1 and TLS 1.2 are enabled by default.</li>
+<li>Starting with
 <a href="http://www.oracle.com/technetwork/java/javaseproducts/documentation/javase7supportreleasenotes-1601161.html#R170_95">Update 95</a>,
-released January 19, 2016.</li>
+released January 19, 2016, TLS 1.1 and TLS 1.2 can be enabled by applications via the <code>jdk.tls.client.protocols</code> system property.</li>
 </ul></li>
 
 <li><p>Java 6</p>
 
 <ul>
-<li>TSL 1.1 was first enabled by default in
-<a href="http://www.oracle.com/technetwork/java/javase/documentation/overview-156328.html#R160_141">Update 141</a>, released on January 17, 2017.</li>
-<li>TLS 1.1 was first enabled via <code>jdk.tls.client.protocols</code> system property in
-<a href="http://www.oracle.com/technetwork/java/javase/documentation/overview-156328.html#6u115-b32">Update 115 b32</a>, released July 19, 2016.</li>
+<li>Starting with
+<a href="http://www.oracle.com/technetwork/java/javase/documentation/overview-156328.html#R160_141">Update 141</a>, released on January 17, 2017,
+TSL 1.1 and TLS 1.2 are enabled by default.</li>
+<li>Starting with
+<a href="http://www.oracle.com/technetwork/java/javase/documentation/overview-156328.html#6u115-b32">Update 115 b32</a>, released July 19, 2016,
+TLS 1.1 and TLS 1.2 can be enabled by applications via the <code>jdk.tls.client.protocols</code> system property.</li>
 </ul></li>
 </ul>
 

@@ -22,6 +22,7 @@ com.mongodb.connection.netty
 com.mongodb.diagnostics.logging
 com.mongodb.event
 com.mongodb.gridfs
+com.mongodb.lang
 com.mongodb.management
 com.mongodb.operation
 com.mongodb.selector
