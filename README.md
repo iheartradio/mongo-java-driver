@@ -1,3 +1,6 @@
+## NOTE: THIS REPO IS FORKED AND HAS CHANGES!
+Mongo has provided us with a patched version of the driver to help us recover from connection cap limitations.  The relevant changes are in the `healthCheck` branch.  These changes were built manually (because we don't have a build process for gradle) and deployed to our archiva.  The build command used was: `./gradlew mongo-java-driver:jar`.
+
 ## Release Notes
 
 Release notes are available [here](https://github.com/mongodb/mongo-java-driver/releases).
